@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ninja Arena</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(".players").hide();
+		var hasBeenClicked = false;
+		$(".arena").click(function(){
+			var backgroundImage = $(this).attr('data-src');
+			$("#title").text("Select Player");
+			$("#title").siblings().toggle();
+			$("#wrapper").css("background-image","url("+backgroundImage+")");
+			hasBeenClicked = true;
+		});
+
+		$(".arena").hover(function(){
+			var backgroundImage = $(this).attr('data-src');
+			$("#wrapper").css("background-image","url("+backgroundImage+")")},function(){
+				if(hasBeenClicked == false){
+					$("#wrapper").css("background-image","none");
+		}
+				
+		})
+		
+
+		$(".playerOne").change(function(){
+			console.log("test");
+			var playerImage = $(this).val();
+			console.log(playerImage);
+			$("#playerOne").html("<img src='"+playerImage+"'>");
+		});
+		$(".playerTwo").change(function(){
+			console.log("test");
+			var playerImage = $(this).val();
+			console.log(playerImage);
+			$("#playerTwo").html("<img src='"+playerImage+"'>");
+			$(".selection").hide();
+		});
+
+	});
+	
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div class="selection">
+			<h2 id="title">Select Arena</h2>
+
+			<div id="arena">
+				<p id="beach" data-src= "beach.jpg" class="arena">beach</p>
+				<p id="planet" data-src= "calvinandhobbes.jpg" class="arena">planet</p>
+				<p id="dojo" data-src= "dojo.jpg" class="arena">dojo</p>
+				<p id="forest" data-src= "forest.jpg" class="arena">forest</p>
+				<p id="matrix" data-src= "matrix.jpg" class="arena">matrix</p>
+				<p id="snow" data-src= "snow.jpg" class="arena">snow</p>
+			</div>
+			<select class="playerOne players">
+				<option value="yellow.png">Yellow Ninja</option>
+				<option value="white.png">White Ninja</option>
+				<option value="black.png">Black Ninja</option>
+				<option value="green.png">Green Ninja</option>
+				<option value="red.png">Red Ninja</option>
+				<option value="leo.jpg">Leo Ninja</option></select>
+			<select class="playerTwo players">
+				<option value="yellow.png">Yellow Ninja</option>
+				<option value="white.png">White Ninja</option>
+				<option value="black.png">Black Ninja</option>
+				<option value="green.png">Green Ninja</option>
+				<option value="red.png">Red Ninja</option>
+				<option value="leo.jpg">Leo Ninja</option></select>
+		</div>
+		<div id="playerOne"></div>
+		<div id="playerTwo"></div>
+	</div>
+</body>
+</html>
